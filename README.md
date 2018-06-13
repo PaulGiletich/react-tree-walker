@@ -1,11 +1,9 @@
-# react-tree-walker 🌲
+# react-tree-walker-with-depth 🌲
 
 Walk a React (or Preact) element tree, executing a "visitor" function against each element.
 
-[![npm](https://img.shields.io/npm/v/react-tree-walker.svg?style=flat-square)](http://npm.im/react-tree-walker)
-[![MIT License](https://img.shields.io/npm/l/react-tree-walker.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![Travis](https://img.shields.io/travis/ctrlplusb/react-tree-walker.svg?style=flat-square)](https://travis-ci.org/ctrlplusb/react-tree-walker)
-[![Codecov](https://img.shields.io/codecov/c/github/ctrlplusb/react-tree-walker.svg?style=flat-square)](https://codecov.io/github/ctrlplusb/react-tree-walker)
+This is a fork of https://github.com/ctrlplusb/react-tree-walker
+with vnode depth added as 5th argument for visitor. Which makes it handy to map the nodes onto a different tree structure
 
 ## TOCs
 
@@ -27,7 +25,7 @@ With this you could, for example, perform pre-rendering parses on your React ele
 In the below example we will create a visitor that will walk a React application, looking for any "class" component that has a `getData` method on it. We will then execute the `getData` function, storing the results into an array.
 
 ```jsx
-import reactTreeWalker from 'react-tree-walker'
+import reactTreeWalker from 'react-tree-walker-with-depth'
 
 class DataFetcher extends React.Component {
   constructor(props) {
@@ -87,7 +85,7 @@ Not a particularly useful piece of code, but hopefully it is illustrative enough
 
 ## Order of Execution
 
-`react-tree-walker` walks your React application in a depth-first fashion, i.e. from the top down, visiting each child until their are no more children available before moving on to the next element. We can illustrate this behaviour using the below example:
+`react-tree-walker-with-depth` walks your React application in a depth-first fashion, i.e. from the top down, visiting each child until their are no more children available before moving on to the next element. We can illustrate this behaviour using the below example:
 
 ```jsx
 <div>
@@ -121,13 +119,13 @@ The API is very simple at the moment, only exposing a single function. We will d
 The default export of the library. The function that performs the magic.
 
 ```javascript
-const reactTreeWalker = require('react-tree-walker')
+const reactTreeWalker = require('react-tree-walker-with-depth')
 ```
 
 _or_
 
 ```javascript
-import reactTreeWalker from 'react-tree-walker'
+import reactTreeWalker from 'react-tree-walker-with-depth'
 ```
 
 **Paramaters**
@@ -180,11 +178,15 @@ It should encapsulates the logic you wish to execute against each element.
 
 * **context** (`Object`, _required_)
 
-  The React context that is available to the current element. `react-tree-walker` emulates React in exposing context down the tree.
+  The React context that is available to the current element. `react-tree-walker-with-depth` emulates React in exposing context down the tree.
 
 * **childContext** (`Object`, _optional_)
 
   If the current element being walked is a "class" Component and it exposes additional "child" context (via the `getChildContext` method) then this will contain the context that is being provided by the component instance.
+
+* **depth** (`number`, _required_)
+
+  the depth of current element nesting relative to tree root provided to walker. Root is at 0.
 
 **Returns**
 

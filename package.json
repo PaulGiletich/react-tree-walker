@@ -1,5 +1,5 @@
 {
-  "name": "react-tree-walker",
+  "name": "react-tree-walker-with-depth",
   "version": "4.0.2",
   "description":
     "Walk a React element tree, executing a provided function against each node.",
@@ -8,11 +8,11 @@
   "files": ["*.js", "*.md", "dist"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ctrlplusb/react-tree-walker.git"
+    "url": "https://github.com/PaulGiletich/react-tree-walker.git"
   },
-  "homepage": "https://github.com/ctrlplusb/react-tree-walker#readme",
-  "author": "Sean Matheson <sean@ctrlplusb.com>",
-  "keywords": ["react", "react-element", "util", "tree", "visitor"],
+  "homepage": "https://github.com/PaulGiletich/react-tree-walker#readme",
+  "author": "Paul Giletich <paul.giletich@gmail.com> ,Sean Matheson <sean@ctrlplusb.com>",
+  "keywords": ["react", "react-element", "util", "tree", "visitor", "depth", "nest"],
   "scripts": {
     "build": "node ./tools/scripts/build.js",
     "clean": "rimraf ./dist && rimraf ./coverage",
